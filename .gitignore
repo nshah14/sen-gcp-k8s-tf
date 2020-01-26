@@ -16,3 +16,10 @@ bin-release/
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+tf/.terraform/
+tf/out.plan
+tf/terraform.tfstate
+tf/terraform.tfstate.backup
+tf/dev/.terraform
+tf/dev/out.plan
+
