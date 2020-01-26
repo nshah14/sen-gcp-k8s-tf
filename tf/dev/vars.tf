@@ -1,5 +1,5 @@
 variable "cluster_name" {
-  default = "dev-sen-gke-cluster"
+  default = "sen-gke-cluster"
 #   type    = string
 }
 variable "cluster_region" {

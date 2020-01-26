@@ -25,3 +25,5 @@ tf/dev/out.plan
 
 tf/dev/terraform.tfstate.backup
 tf/dev/terraform.tfstate
+tf/dev/.terraform.tfstate.lock.info
+tf/dev/kubeconfig
