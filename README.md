@@ -7,4 +7,4 @@ Pre-requisite
 
 
 
-gcloud container clusters get-credentials dev-dev-sen-gke-cluster --region us-central1 --project sen-tf-k8s-dev
+gcloud container clusters get-credentials name-of-the-cluster --region us-central1 --project name-of-the-project
