@@ -23,3 +23,5 @@ tf/terraform.tfstate.backup
 tf/dev/.terraform
 tf/dev/out.plan
 
+tf/dev/terraform.tfstate.backup
+tf/dev/terraform.tfstate

@@ -3,7 +3,7 @@ variable "cluster_name" {
 #   type    = string
 }
 variable "cluster_region" {
- default = "us-central-1"
+ default = "us-central1"
 
 }
 
