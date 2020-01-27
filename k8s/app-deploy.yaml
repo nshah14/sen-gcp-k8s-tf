@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-bday-service
+  labels:
+    application: hello
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        svc: hello-bday-service
+        application: hello
+    spec:
+      containers:
+      - name: hello-bday-service
+        image: gcr.io/sen-tf-k8s-dev/rev-pg-app
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: httpport
+        env:
+          - name: SPRING_DATABASE_INSTANCE_NAME
+            value: "sen-tf-k8s-dev:us-central1:pg-instance-gke-dev"
+          - name: SPRING_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: pg-db-secret
+                key: username
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pg-db-secret
+                key: password
+        livenessProbe:
+          httpGet:
+            path: /hello/nav
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /hello/nav
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 20

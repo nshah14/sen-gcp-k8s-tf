@@ -48,6 +48,13 @@ variable "env" {
 
 }
 
+variable "instance_name" {
+   description =" name  of database"
+  type = string
+
+}
+
+
 
 
 

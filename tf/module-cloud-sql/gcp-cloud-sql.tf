@@ -1,5 +1,5 @@
 resource "google_sql_database_instance" "master" {
-  name             = "${var.env}-pg-instance"
+  name             = var.instance_name
   database_version =  var.database_version
   region           =  var.sql_region
   project          =  var.sql_project
