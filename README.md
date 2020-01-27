@@ -22,6 +22,11 @@ terraform plan -out out.plan
 # execute the plan
 terraform apply out.plan
 
+# To connect with kuberentes cluster 
+
+gcloud container clusters get-credentials CLSUTER_NAME --region REGION_NAME --project PROJECT_NAME
+
+
 # to deploy web app run build this repo
 
 https://github.com/nshah14/gcp-pg-app.git
@@ -37,21 +42,13 @@ https://github.com/nshah14/gcp-pg-app.git
 # Run app-secrets.yaml to create secret which are encoded.(retrieved from  terrafrom console)
 # Run app-deploy.yaml to create the deployment
 # Run app-service.yaml to deploy the service as loadbalancer on GCP.
+# Retrieve Loadbalancer IP  to test
+ http://{Your-Loadbalancer-ip}:8080/hello/tom (Should see user doesn't exist)
+# To create data 
+curl -X PUT http://{Your-Loadbalancer-ip}:8080/hello/tom -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{ "dateOfBirth":"2020-01-18" }'
+# To test data 
+http://{Your-Loadbalancer-ip}:8080/hello/tom (Should see  msg with number of days left for tom's bday.)
 
 
 
-vi src/main/resources/application.properties
-  gcloud sql connect dev-pg11-instance --user=postgres --quiet
-  vi src/main/resources/application.properties
- cat src/main/resources/application.properties
- mvn compile jib:dockerBuild
-  docker images
-  docker run -p 8080:8080 -t gcr.io/sen-tf-k8s-dev/rev-pg-app
-  docker tag gcr.io/sen-tf-k8s-dev/rev-pg-app gcr.io/sen-tf-k8s-dev/rev-pg-app
-  docker tags
-docker push gcr.io/sen-tf-k8s-dev/rev-pg-app
-  docker run -p 8080:8080 -t gcr.io/sen-tf-k8s-dev/rev-pg-app
 
-  curl -X PUT http://35.225.22.63:8080/hello/nvwed -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{ "dateOfBirth":"2020-01-18" }'
-
-  gcloud container clusters get-credentials dev-sen-gke-cluster --region us-central1 --project sen-tf-k8s-dev
