@@ -50,5 +50,11 @@ curl -X PUT http://{Your-Loadbalancer-ip}:8080/hello/tom -H 'cache-control: no-c
 http://{Your-Loadbalancer-ip}:8080/hello/tom (Should see  msg with number of days left for tom's bday.)
 
 
+# FURTHER CHANGES
+  Ingress to deploy multiple services.
+  Add some firewall rules for restricting the access.
+  
+
+
 
 
