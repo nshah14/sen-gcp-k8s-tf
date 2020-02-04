@@ -10,9 +10,6 @@ resource "google_sql_database_instance" "master" {
     disk_size         = var.sql_disk_size
   }
 
-   timeouts {
-    delete = "20m"
-  }
 }
 
 
@@ -33,9 +30,6 @@ resource "google_sql_user" "users" {
   password = var.sql_password
   project  =  var.sql_project
 
-  timeouts {
-    delete = "20m"
-  }
 }
 
 output "google_sql_user" {
